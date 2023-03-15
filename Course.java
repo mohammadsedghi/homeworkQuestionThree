@@ -1,14 +1,16 @@
 package questionthree;
 
 public class Course {
-    String name;
-    int teacherId;
-    int studentId;
-    Teacher[] teachers = new Teacher[10];
+   private String name;
+    private int teacherId;
+   private int studentId;
+    private Teacher[] teachers = new Teacher[10];
     private Student[] students = new Student[10];
-    Student student = new Student("reza", "mohammadi", 1);
-    Student student1 = new Student("hooman", "ahmadi", 2);
+    Student student1 = new Student("reza", "mohammadi", 1,"mechanic");
+    Student student = new Student("hooman", "ahmadi", 2,"mechanic");
+    Student student2 = new Student("niloofar", "hajipoor", 3,"mechanic");
     Teacher teacher = new Teacher("ali", "yarmohammadi", 622);
+    Teacher teacher1 = new Teacher("nima", "rezaee", 623);
 
     public Course(String name, int teacherId, int studentId) {
         setName(name);
@@ -55,10 +57,12 @@ public class Course {
         this.studentId = studentId;
     }
     public void addStudent() {
-        for (int i = 0; i < students.length; i++) {
-            if (students[i] == null) {
-                students[i] = student;
-                break;
+        if(studentId==student.getId()) {
+            for (int i = 0; i < students.length; i++) {
+                if (students[i] == null) {
+                    students[i] = student;
+                    break;
+                }
             }
         }
     }
@@ -82,6 +86,10 @@ public class Course {
                     System.out.print(s.getName()+"  ");
                     System.out.print(s.getLastname()+"  ");
                     System.out.print(s.getId()+"  ");
+                    if (student.getId()==1){
+                        setTeacherScore(17);
+                        System.out.print(s.getScore());
+                    }
                     System.out.println();
                 }
             }
@@ -102,5 +110,8 @@ public class Course {
                 }
             }
         }
+    }
+    public void setTeacherScore(double score){
+        if (teacherId==teacher.getId()&&studentId==student.getId())student.setScore(score);
     }
 }
