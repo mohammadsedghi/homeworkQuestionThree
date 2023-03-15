@@ -3,14 +3,15 @@ package questionthree;
 import java.util.Scanner;
 
 public class Course {
-   private String name;
+    //variable and properties
+    private String name;
     private int teacherId;
-   private int studentId;
+    private int studentId;
     private Teacher[] teachers = new Teacher[10];
     private Student[] students = new Student[10];
-    Student student = new Student("reza", "mohammadi", 1,"mechanic");
-    Student student1 = new Student("hooman", "ahmadi", 2,"mechanic");
-    Student student2 = new Student("niloofar", "hajipoor", 3,"mechanic");
+    Student student = new Student("reza", "mohammadi", 1, "mechanic");
+    Student student1 = new Student("hooman", "ahmadi", 2, "mechanic");
+    Student student2 = new Student("niloofar", "hajipoor", 3, "mechanic");
     Teacher teacher = new Teacher("ali", "yarmohammadi", 622);
     Teacher teacher1 = new Teacher("nima", "rezaee", 623);
 
@@ -42,7 +43,6 @@ public class Course {
     }
 
 
-
     public int getTeacherId() {
         return teacherId;
     }
@@ -58,8 +58,10 @@ public class Course {
     public void setStudentIdd(int studentId) {
         this.studentId = studentId;
     }
+
+    //add student method add student to students Array
     public void addStudent() {
-        if(studentId==student.getId()) {
+        if (studentId == student.getId()) {
             for (int i = 0; i < students.length; i++) {
                 if (students[i] == null) {
                     students[i] = student;
@@ -68,16 +70,20 @@ public class Course {
             }
         }
     }
-    public void addStudentList(Student student){
-        if(studentId==student.getId()) {
-        for (int i = 0; i < students.length; i++) {
-            if (students[i] == null) {
-                students[i] = student;
-                break;
+
+    //overload method add student
+    public void addStudent(Student student) {
+        if (studentId == student.getId()) {
+            for (int i = 0; i < students.length; i++) {
+                if (students[i] == null) {
+                    students[i] = student;
+                    break;
+                }
             }
         }
-    }}
+    }
 
+    //add teacher
     public void addTeacher() {
         for (int i = 0; i < teachers.length; i++) {
             if (teachers[i] == null) {
@@ -87,17 +93,18 @@ public class Course {
         }
     }
 
+    //print students
     public void printStudents() {
         if (teacher.getId() == teacherId) {
             System.out.println("list of Student");
             for (Student s : getStudents()
             ) {
                 if (s != null) {
-                    System.out.print("course name is "+getName()+"  :");
-                    System.out.print(s.getName()+"  ");
-                    System.out.print(s.getLastname()+"  ");
-                    System.out.print(s.getId()+"  ");
-                    if (student.getId()==1){
+                    System.out.print("course name is " + getName() + "  :");
+                    System.out.print(s.getName() + "  ");
+                    System.out.print(s.getLastname() + "  ");
+                    System.out.print(s.getId() + "  ");
+                    if (student.getId() == 1) {
                         setTeacherScore(17);
                         System.out.print(s.getScore());
                     }
@@ -108,26 +115,31 @@ public class Course {
 
     }
 
+    //print teacher
     public void printTeachers() {
         if (student.getId() == studentId) {
             System.out.println("list of Teachers");
             for (Teacher t : getTeachers()
             ) {
                 if (t != null) {
-                    System.out.print("course name is "+getName()+"  :");
-                    System.out.print(t.getName()+"  ");
-                    System.out.print(t.getLastname()+"  ");
-                    System.out.println(t.getId()+"  ");
+                    System.out.print("course name is " + getName() + "  :");
+                    System.out.print(t.getName() + "  ");
+                    System.out.print(t.getLastname() + "  ");
+                    System.out.println(t.getId() + "  ");
                 }
             }
         }
     }
-    public void setTeacherScore(double score){
-        if (teacherId==teacher.getId()&&studentId==student.getId())student.setScore(score);
+
+    //set score with teacher
+    public void setTeacherScore(double score) {
+        if (teacherId == teacher.getId() && studentId == student.getId()) student.setScore(score);
     }
-public void register(){
-        int counter=0;
-        while (counter<3) {
+
+    //register student
+    public void register() {
+        int counter = 0;
+        while (counter < 3) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("inter name of student");
             String name = scanner.next();
@@ -138,8 +150,8 @@ public void register(){
             System.out.println("inter major of student");
             String major = scanner.next();
             Student student3 = new Student(name, lastName, id, major);
-            addStudentList(student3);
+            addStudent(student3);
             counter++;
         }
-}
+    }
 }
