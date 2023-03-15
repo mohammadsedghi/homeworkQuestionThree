@@ -1,13 +1,15 @@
 package questionthree;
 
+import java.util.Scanner;
+
 public class Course {
    private String name;
     private int teacherId;
    private int studentId;
     private Teacher[] teachers = new Teacher[10];
     private Student[] students = new Student[10];
-    Student student1 = new Student("reza", "mohammadi", 1,"mechanic");
-    Student student = new Student("hooman", "ahmadi", 2,"mechanic");
+    Student student = new Student("reza", "mohammadi", 1,"mechanic");
+    Student student1 = new Student("hooman", "ahmadi", 2,"mechanic");
     Student student2 = new Student("niloofar", "hajipoor", 3,"mechanic");
     Teacher teacher = new Teacher("ali", "yarmohammadi", 622);
     Teacher teacher1 = new Teacher("nima", "rezaee", 623);
@@ -66,6 +68,15 @@ public class Course {
             }
         }
     }
+    public void addStudentList(Student student){
+        if(studentId==student.getId()) {
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] == null) {
+                students[i] = student;
+                break;
+            }
+        }
+    }}
 
     public void addTeacher() {
         for (int i = 0; i < teachers.length; i++) {
@@ -114,4 +125,21 @@ public class Course {
     public void setTeacherScore(double score){
         if (teacherId==teacher.getId()&&studentId==student.getId())student.setScore(score);
     }
+public void register(){
+        int counter=0;
+        while (counter<3) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("inter name of student");
+            String name = scanner.next();
+            System.out.println("inter lastName of students");
+            String lastName = scanner.next();
+            System.out.println("inter id of student");
+            int id = scanner.nextInt();
+            System.out.println("inter major of student");
+            String major = scanner.next();
+            Student student3 = new Student(name, lastName, id, major);
+            addStudentList(student3);
+            counter++;
+        }
+}
 }

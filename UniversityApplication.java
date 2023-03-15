@@ -9,10 +9,10 @@ public class UniversityApplication {
        Course course2 = new Course("math", 622, 3);
        Course course3 = new Course("physics", 623, 1);
 
-        course1.addStudent();
-        course1.addTeacher();
-        course1.printStudents();
-        course1.printTeachers();
+        course.addStudent();
+        course.addTeacher();
+        course.printStudents();
+        course.printTeachers();
 
     }
 }
