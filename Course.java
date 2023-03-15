@@ -9,6 +9,7 @@ public class Course {
     private int studentId;
     private Teacher[] teachers = new Teacher[10];
     private Student[] students = new Student[10];
+    private Course[] courses=new Course[10];
     Student student = new Student("reza", "mohammadi", 1, "mechanic");
     Student student1 = new Student("hooman", "ahmadi", 2, "mechanic");
     Student student2 = new Student("niloofar", "hajipoor", 3, "mechanic");
@@ -77,6 +78,16 @@ public class Course {
             for (int i = 0; i < students.length; i++) {
                 if (students[i] == null) {
                     students[i] = student;
+                    break;
+                }
+            }
+        }
+    }
+    public void addCourse(Course course) {
+        if (studentId == student.getId()&&teacherId==teacher.getId()) {
+            for (int i = 0; i < courses.length; i++) {
+                if (courses[i] == null) {
+                    courses[i] = course;
                     break;
                 }
             }
@@ -151,6 +162,21 @@ public class Course {
             String major = scanner.next();
             Student student3 = new Student(name, lastName, id, major);
             addStudent(student3);
+            counter++;
+        }
+    }
+    public void registerCourse() {
+        int counter = 0;
+        while (counter < 3) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("inter name of course");
+            String name = scanner.next();
+            System.out.println("inter teacherId ");
+         int  teacherId = scanner.nextInt();
+            System.out.println("inter studentId ");
+            int studentId = scanner.nextInt();
+            Course course = new Course(name, teacherId, studentId);
+            addCourse(course);
             counter++;
         }
     }
