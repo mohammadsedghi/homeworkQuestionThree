@@ -1,12 +1,26 @@
 package questionthree;
 
 public class Person {
-   private String name;
-    private  String lastname;
+   protected String name;
+    protected   String lastname;
+    protected  int id;
 
-    public Person(String name, String lastname) {
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+
+    public Person(String name, String lastname,int id) {
         this.name = name;
         this.lastname = lastname;
+        this.id=id;
     }
 
     public String getName() {
@@ -24,4 +38,5 @@ public class Person {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+
 }

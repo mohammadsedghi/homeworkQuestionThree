@@ -4,13 +4,15 @@ public class Course {
     String name;
     int teacherId;
     int studentId;
-Teacher [] teachers=new Teacher[10];
-Student [] students=new Student[10];
+    Teacher[] teachers = new Teacher[10];
+    private Student[] students = new Student[10];
+    Student student = new Student("reza", "mohammadi", 1);
+    Teacher teacher = new Teacher("ali", "yarmohammadi", 622);
 
     public Course(String name, int teacherId, int studentId) {
-        this.name = name;
-        this.teacherId=teacherId;
-        this.studentId=studentId;
+        setName(name);
+        setTeacherId(teacherId);
+        setStudentIdd(studentId);
 
     }
 
@@ -34,9 +36,9 @@ Student [] students=new Student[10];
         return students;
     }
 
-    public void setStudents(Student[] students) {
-        this.students = students;
-    }
+//    public void setStudents(Student[] students) {
+//        this.students = students;
+//    }
 
     public int getTeacherId() {
         return teacherId;
@@ -50,41 +52,68 @@ Student [] students=new Student[10];
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentIdd(int studentId) {
         this.studentId = studentId;
     }
 
-    public Student [] listStudent(int id){
-        Student []students1 =new Student[10];
-        if (id==getTeacherId())students1= getStudents();
-        return students1;
-    }
-    public Teacher [] listTeacher(int id){
-        Teacher []teachers1 =new Teacher[10];
-        if (id==getTeacherId())teachers1= getTeachers();
+    //    public void listStudent(int id){
+//        Student []students1 =new Student[10];
+//        if (id==getTeacherId())students1= getStudents();
+//
+//    }
+    public Teacher[] listTeacher(int id) {
+        Teacher[] teachers1 = new Teacher[10];
+        if (id == getTeacherId()) teachers1 = getTeachers();
         return teachers1;
     }
-public void addStudent(Student student){
-    Student []students1 =new Student[10];
-    for (int i = 0; i <getStudents().length ; i++) {
-      if(students1[i]==null){
-          students1[i].setId(student.getId());
-          students1[i].setName(student.getName());
-          students1[i].setLastname(student.getLastname());
-          setStudents(students1);
-      }
-    }
-}
-    public void addTeacher(Teacher teacher){
-        Teacher []teachers1 =new Teacher[10];
-        for (int i = 0; i <getStudents().length ; i++) {
-            if(teachers1[i]==null){
-                teachers1[i].setId(teacher.getId());
-                teachers1[i].setName(teacher.getName());
-                teachers1[i].setLastname(teacher.getLastname());
-                setTeachers(teachers1);
+
+    public void addStudent() {
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] == null) {
+                students[i] = student;
+                break;
             }
         }
     }
 
+    public void addTeacher() {
+        for (int i = 0; i < teachers.length; i++) {
+            if (teachers[i] == null) {
+                teachers[i] = teacher;
+                break;
+            }
+        }
+    }
+
+    public void printStudents() {
+        if (teacher.getId() == teacherId) {
+            System.out.println("list of Student");
+            for (Student s : getStudents()
+            ) {
+                if (s != null) {
+                    System.out.print("course name is "+getName()+"  :");
+                    System.out.print(s.getName()+"  ");
+                    System.out.print(s.getLastname()+"  ");
+                    System.out.print(s.getId()+"  ");
+                    System.out.println();
+                }
+            }
+        }
+
+    }
+
+    public void printTeachers() {
+        if (student.getId() == studentId) {
+            System.out.println("list of Teachers");
+            for (Teacher t : getTeachers()
+            ) {
+                if (t != null) {
+                    System.out.print("course name is "+getName()+"  :");
+                    System.out.print(t.getName()+"  ");
+                    System.out.print(t.getLastname()+"  ");
+                    System.out.println(t.getId()+"  ");
+                }
+            }
+        }
+    }
 }
