@@ -64,5 +64,27 @@ Student [] students=new Student[10];
         if (id==getTeacherId())teachers1= getTeachers();
         return teachers1;
     }
+public void addStudent(Student student){
+    Student []students1 =new Student[10];
+    for (int i = 0; i <getStudents().length ; i++) {
+      if(students1[i]==null){
+          students1[i].setId(student.getId());
+          students1[i].setName(student.getName());
+          students1[i].setLastname(student.getLastname());
+          setStudents(students1);
+      }
+    }
+}
+    public void addTeacher(Teacher teacher){
+        Teacher []teachers1 =new Teacher[10];
+        for (int i = 0; i <getStudents().length ; i++) {
+            if(teachers1[i]==null){
+                teachers1[i].setId(teacher.getId());
+                teachers1[i].setName(teacher.getName());
+                teachers1[i].setLastname(teacher.getLastname());
+                setTeachers(teachers1);
+            }
+        }
+    }
 
 }
