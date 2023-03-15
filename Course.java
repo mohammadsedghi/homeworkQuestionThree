@@ -7,6 +7,7 @@ public class Course {
     Teacher[] teachers = new Teacher[10];
     private Student[] students = new Student[10];
     Student student = new Student("reza", "mohammadi", 1);
+    Student student1 = new Student("hooman", "ahmadi", 2);
     Teacher teacher = new Teacher("ali", "yarmohammadi", 622);
 
     public Course(String name, int teacherId, int studentId) {
@@ -36,9 +37,7 @@ public class Course {
         return students;
     }
 
-//    public void setStudents(Student[] students) {
-//        this.students = students;
-//    }
+
 
     public int getTeacherId() {
         return teacherId;
@@ -55,18 +54,6 @@ public class Course {
     public void setStudentIdd(int studentId) {
         this.studentId = studentId;
     }
-
-    //    public void listStudent(int id){
-//        Student []students1 =new Student[10];
-//        if (id==getTeacherId())students1= getStudents();
-//
-//    }
-    public Teacher[] listTeacher(int id) {
-        Teacher[] teachers1 = new Teacher[10];
-        if (id == getTeacherId()) teachers1 = getTeachers();
-        return teachers1;
-    }
-
     public void addStudent() {
         for (int i = 0; i < students.length; i++) {
             if (students[i] == null) {
